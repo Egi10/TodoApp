@@ -2,6 +2,8 @@ package com.todeapp.egifcb.todoapp.api;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
 
 public interface APIInterface {
@@ -10,4 +12,7 @@ public interface APIInterface {
 
     @POST("users")
     Call<APIResponse> register(@Body APIRequest apiRequest);
+
+    @GET("todos/")
+    Call<APIResponse> todos(@Header("x-auth") String auth);
 }

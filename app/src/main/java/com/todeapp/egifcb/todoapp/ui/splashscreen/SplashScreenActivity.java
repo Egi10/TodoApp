@@ -5,11 +5,11 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.WindowManager;
-import android.widget.Toast;
 
 import com.todeapp.egifcb.todoapp.R;
 import com.todeapp.egifcb.todoapp.preferences.UserPreferences;
 import com.todeapp.egifcb.todoapp.ui.login.LoginActivity;
+import com.todeapp.egifcb.todoapp.ui.main.MainActivity;
 
 public class SplashScreenActivity extends AppCompatActivity {
     private UserPreferences userPreferences;
@@ -27,7 +27,10 @@ public class SplashScreenActivity extends AppCompatActivity {
             @Override
             public void run() {
                 if (userPreferences.getIslogin()) {
-                    Toast.makeText(getBaseContext(), "Lagi Dikerjakan", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(SplashScreenActivity.this, MainActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                    startActivity(intent);
+                    finish();
                 } else {
                     Intent intent = new Intent(SplashScreenActivity.this, LoginActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);

@@ -8,11 +8,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.roger.catloadinglibrary.CatLoadingView;
 import com.todeapp.egifcb.todoapp.R;
 import com.todeapp.egifcb.todoapp.preferences.UserPreferences;
+import com.todeapp.egifcb.todoapp.ui.main.MainActivity;
 import com.todeapp.egifcb.todoapp.ui.register.RegisterActivity;
 
 public class LoginActivity extends AppCompatActivity implements LoginView, View.OnClickListener {
@@ -46,7 +46,10 @@ public class LoginActivity extends AppCompatActivity implements LoginView, View.
         userPreferences.setKeyMail(email);
         userPreferences.setKeyToken(auth);
 
-        Toast.makeText(getBaseContext(), id + " - " + email + " - " + auth, Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        startActivity(intent);
+        finish();
     }
 
     @Override
