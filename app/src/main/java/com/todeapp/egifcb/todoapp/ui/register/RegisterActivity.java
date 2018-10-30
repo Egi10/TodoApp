@@ -1,43 +1,37 @@
-package com.todeapp.egifcb.todoapp.ui.login;
+package com.todeapp.egifcb.todoapp.ui.register;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.roger.catloadinglibrary.CatLoadingView;
 import com.todeapp.egifcb.todoapp.R;
 import com.todeapp.egifcb.todoapp.preferences.UserPreferences;
-import com.todeapp.egifcb.todoapp.ui.register.RegisterActivity;
 
-public class LoginActivity extends AppCompatActivity implements LoginView, View.OnClickListener {
+public class RegisterActivity extends AppCompatActivity implements RegisterView, View.OnClickListener {
+    private RegisterPresenter registerPresenter;
     private EditText etEmail;
     private EditText etPassword;
-    private LoginPresenter loginPresenter;
     private UserPreferences userPreferences;
     private CatLoadingView catLoadingView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_register);
+
+        registerPresenter = new RegisterPresenter(this);
+        userPreferences = new UserPreferences(getBaseContext());
+        catLoadingView = new CatLoadingView();
 
         etEmail = findViewById(R.id.et_email);
         etPassword = findViewById(R.id.et_password);
-        TextView tvBuatDisini = findViewById(R.id.tv_buat_disini);
-        Button btnLogin = findViewById(R.id.btn_login);
-
-        userPreferences = new UserPreferences(getBaseContext());
-        loginPresenter = new LoginPresenter(this);
-        catLoadingView = new CatLoadingView();
-
-        tvBuatDisini.setOnClickListener(this);
-        btnLogin.setOnClickListener(this);
+        Button btnRegister = findViewById(R.id.btn_register);
+        btnRegister.setOnClickListener(this);
     }
 
     @Override
@@ -46,7 +40,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView, View.
         userPreferences.setKeyMail(email);
         userPreferences.setKeyToken(auth);
 
-        Toast.makeText(getBaseContext(), id + " - " + email + " - " + auth, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getBaseContext(), email, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -67,17 +61,11 @@ public class LoginActivity extends AppCompatActivity implements LoginView, View.
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.btn_login :
+            case R.id.btn_register :
                 String email = etEmail.getText().toString();
                 String password = etPassword.getText().toString();
 
-                loginPresenter.login(email, password);
-                break;
-
-            case R.id.tv_buat_disini :
-                Intent intent = new Intent(getBaseContext(), RegisterActivity.class);
-                startActivity(intent);
-                finish();
+                registerPresenter.register(email, password);
                 break;
         }
     }
