@@ -15,4 +15,8 @@ public interface APIInterface {
 
     @GET("todos/")
     Call<APIResponse> todos(@Header("x-auth") String auth);
+
+    @POST("todos")
+    Call<APIResponse> addTodos(@Header("x-auth") String auth,
+                               @Body APIRequest apiRequest);
 }

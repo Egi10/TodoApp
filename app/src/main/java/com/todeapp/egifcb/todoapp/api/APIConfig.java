@@ -24,26 +24,4 @@ public class APIConfig {
     public static APIInterface getConfig() {
         return getRetrofitClient().create(APIInterface.class);
     }
-
-    private static Retrofit getRetrofitClientAuth(final String auth) {
-        OkHttpClient okHttpClient = new OkHttpClient.Builder()
-                .addInterceptor(new Interceptor() {
-                    @Override
-                    public Response intercept(@NonNull Chain chain) throws IOException {
-                        Request request = chain.request().newBuilder()
-                                .addHeader("x-auth", auth).build();
-                        return chain.proceed(request);
-                    }
-                }).build();
-
-        return new Retrofit.Builder()
-                .baseUrl("https://murmuring-temple-99362.herokuapp.com/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .client(okHttpClient)
-                .build();
-    }
-
-    public static APIInterface getConfigAuth(String auth) {
-        return getRetrofitClientAuth(auth).create(APIInterface.class);
-    }
 }

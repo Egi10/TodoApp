@@ -1,15 +1,19 @@
 package com.todeapp.egifcb.todoapp.ui.main;
 
+import android.content.Intent;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Toast;
 import com.todeapp.egifcb.todoapp.R;
 import com.todeapp.egifcb.todoapp.adapter.TodosAdapter;
 import com.todeapp.egifcb.todoapp.model.Todos;
 import com.todeapp.egifcb.todoapp.preferences.UserPreferences;
+import com.todeapp.egifcb.todoapp.ui.tambahtodos.TambahTodosActivity;
 
 import java.util.ArrayList;
 
@@ -46,6 +50,27 @@ public class MainActivity extends AppCompatActivity implements MainView{
                 loadData();
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_tambah :
+                Intent intent = new Intent(this, TambahTodosActivity.class);
+                startActivity(intent);
+                finish();
+                break;
+
+            case R.id.menu_keluar :
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
