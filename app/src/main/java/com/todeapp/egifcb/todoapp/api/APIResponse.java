@@ -15,6 +15,17 @@ public class APIResponse {
     @SerializedName("todos")
     private ArrayList<Todos> listTodos;
 
+    public Todos getTodos() {
+        return todos;
+    }
+
+    public void setTodos(Todos todos) {
+        this.todos = todos;
+    }
+
+    @SerializedName("todo")
+    private Todos todos;
+
     public ArrayList<Todos> getListTodos() {
         return listTodos;
     }

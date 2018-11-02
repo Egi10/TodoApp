@@ -1,6 +1,7 @@
 package com.todeapp.egifcb.todoapp.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,6 +12,7 @@ import android.widget.Toast;
 
 import com.todeapp.egifcb.todoapp.R;
 import com.todeapp.egifcb.todoapp.model.Todos;
+import com.todeapp.egifcb.todoapp.ui.detailtodos.DetailTodosActivity;
 
 import java.util.ArrayList;
 
@@ -47,7 +49,9 @@ public class TodosAdapter extends RecyclerView.Adapter<TodosAdapter.ViewHolder> 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, todos.getText(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(context, DetailTodosActivity.class);
+                intent.putExtra("id", todos.getId());
+                context.startActivity(intent);
             }
         });
     }

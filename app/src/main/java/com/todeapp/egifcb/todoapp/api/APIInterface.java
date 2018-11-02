@@ -5,6 +5,8 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface APIInterface {
     @POST("users/login")
@@ -19,4 +21,8 @@ public interface APIInterface {
     @POST("todos")
     Call<APIResponse> addTodos(@Header("x-auth") String auth,
                                @Body APIRequest apiRequest);
+
+    @GET("todos/{id}")
+    Call<APIResponse> getDetailTodos(@Header("x-auth") String auth,
+                                     @Path("id") String id);
 }

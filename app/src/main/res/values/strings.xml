@@ -11,4 +11,8 @@
     <string name="tambah">Tambah</string>
     <string name="masukan_text">Masukan Text</string>
     <string name="input">INPUT</string>
+    <string name="creator">Creator</string>
+    <string name="text">Text</string>
+    <string name="edit_todos">EDIT TODOS</string>
+    <string name="hapus_todos">HAPUS TODOS</string>
 </resources>
