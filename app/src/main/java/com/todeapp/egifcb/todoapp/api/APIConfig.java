@@ -16,7 +16,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class APIConfig {
     private static Retrofit getRetrofitClient() {
         return new Retrofit.Builder()
-                .baseUrl("https://murmuring-temple-99362.herokuapp.com/")
+                .baseUrl("https://sleepy-badlands-72556.herokuapp.com/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
     }

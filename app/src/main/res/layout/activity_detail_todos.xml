@@ -33,23 +33,25 @@
         android:id="@+id/tv_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"/>
+        android:layout_marginBottom="20dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:id="@+id/btn_edit"
-            android:layout_weight="1"
-            android:text="@string/edit_todos"/>
-        <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/btn_hapus"
             android:layout_weight="1"
-            android:text="@string/hapus_todos"/>
+            android:text="@string/edit_todos" />
+
+        <Button
+            android:id="@+id/btn_hapus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/hapus_todos" />
     </LinearLayout>
 </LinearLayout>

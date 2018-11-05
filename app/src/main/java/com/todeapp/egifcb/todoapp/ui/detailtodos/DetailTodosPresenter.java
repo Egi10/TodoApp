@@ -40,4 +40,28 @@ class DetailTodosPresenter {
             }
         });
     }
+
+    void deleteDetail(String token, String id) {
+        detailTodosView.showLoading();
+
+        APIInterface apiInterface = APIConfig.getConfig();
+        Call<APIResponse> apiResponseCall = apiInterface.deleteTodos(token, id);
+        apiResponseCall.enqueue(new Callback<APIResponse>() {
+            @Override
+            public void onResponse(@NonNull Call<APIResponse> call, @NonNull Response<APIResponse> response) {
+                if (response.isSuccessful()) {
+                    if (response.body() != null) {
+                        detailTodosView.onSuccessDelete(response.body().getTodos());
+                    }
+                }
+                detailTodosView.hideLoading();
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<APIResponse> call, @NonNull Throwable t) {
+                detailTodosView.onError(t.getMessage());
+                detailTodosView.hideLoading();
+            }
+        });
+    }
 }

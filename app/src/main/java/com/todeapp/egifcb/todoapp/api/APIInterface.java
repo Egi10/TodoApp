@@ -2,6 +2,7 @@ package com.todeapp.egifcb.todoapp.api;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
@@ -25,4 +26,8 @@ public interface APIInterface {
     @GET("todos/{id}")
     Call<APIResponse> getDetailTodos(@Header("x-auth") String auth,
                                      @Path("id") String id);
+
+    @DELETE("todos/{id}")
+    Call<APIResponse> deleteTodos(@Header("x-auth") String auth,
+                                  @Path("id") String id);
 }
